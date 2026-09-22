@@ -1,13 +1,16 @@
 import re
 import nltk
-import spacy
 from nltk.corpus import stopwords
+
+# Download only if not already present
+try:
+    stop_words = set(stopwords.words("english"))
+except LookupError:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words("english"))
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-nlp = spacy.load("en_core_web_sm")
-stop_words = set(stopwords.words("english"))
 
 def clean_text(text):
     text = text.lower()
