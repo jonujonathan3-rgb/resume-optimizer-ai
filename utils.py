@@ -2,12 +2,15 @@ import re
 import nltk
 from nltk.corpus import stopwords
 
-nltk.download('stopwords')
+# Download only if not already present
+try:
+    stop_words = set(stopwords.words("english"))
+except LookupError:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words("english"))
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-stop_words = set(stopwords.words("english"))
 
 def clean_text(text):
     text = text.lower()
