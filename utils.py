@@ -1,12 +1,10 @@
 import re
 import nltk
-import spacy
 from nltk.corpus import stopwords
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-nlp = spacy.load("en_core_web_sm")
 stop_words = set(stopwords.words("english"))
 
 def clean_text(text):
